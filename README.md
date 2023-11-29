@@ -1,5 +1,9 @@
 # tdl-rest-api
 
+#### Useful commands
+npx cypress run
+npx cypress open
+
 ## Requirements:
 ## 1. Setup:
 - The base URL for the API is: `https://api.zeplin.dev/v1/`.
@@ -14,14 +18,14 @@ The API requires authentication using an API key. Create an API key in your zepl
 profile.
 Start by verifying that the authentication process is working as expected.
 ### Task 2: Test Cases
-Write positive test cases for the following scenarios:
-Update project with a unique name and description which includes current date
+1. Write positive test cases for the following scenarios:
+- Update project with a unique name and description which includes current date
 and time.
-Add a new color to the project. After the color is created verify that it was
+- Add a new color to the project. After the color is created verify that it was
 successfully added to the project by sending a request to obtain all colors.
-Write negative test cases for the following endpoint:
-Update project: /projects/{project_id}
-Create color: /projects/{project_id}/colors
+2. Write negative test cases for the following endpoint:
+- Update project: /projects/{project_id}
+- Create color: /projects/{project_id}/colors
 ### Task 3: Automation Script
 Implement an automation script using your preferred programming language and testing
 framework to automate the test cases written in Task 2.
