@@ -1,6 +1,6 @@
 import { config } from "../../config"
 
-describe('All projects tests', () => {
+describe('Authentication test', () => {
   it('GET should fetch at least 1 project from the /projects endpoint', () => {
     cy.request({
       method: 'GET',

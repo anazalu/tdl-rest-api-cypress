@@ -1,8 +1,7 @@
 import { config } from "../../config"
 
-describe('Colors tests', () => {
+describe('Negative scenario colors tests', () => {
   let projectId: string;
-
 
   before(() => {
     // retrieve a project ID
@@ -53,24 +52,4 @@ describe('Colors tests', () => {
         expect(response.body).to.have.property('id');
       });
   });
-
-  // it('PATCH should modify colors', () => {
-
-  //   cy.request({
-  //     method: 'PATCH',
-  //     url: `/projects/${projectId}/colors`,
-  //     headers: {
-  //       Authorization: `Bearer ${config.token}`
-  //     },
-  //     body: {
-  //       name: `New unique name ${Math.random} `,
-  //       description: `New description created on ${Date.now}`
-  //     }
-  //   })
-  //     .then((postResponse) => {
-  //       expect(postResponse.status).to.equal(204);
-
-  //     });
-  // });
-
 });

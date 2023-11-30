@@ -1,4 +1,4 @@
-describe('Authentication test', () => {
+describe('Negative scenario for authentication test', () => {
   it('GET should fail to fetch any projects from the /projects endpoint due to the lack of auth token', () => {
     cy.request({
       method: 'GET',

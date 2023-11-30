@@ -2,6 +2,7 @@
 
 #### Useful commands
 npx cypress run
+npx cypress run -s "cypress/e2e/neg-project.cy.ts"
 npx cypress open
 
 ## Requirements:

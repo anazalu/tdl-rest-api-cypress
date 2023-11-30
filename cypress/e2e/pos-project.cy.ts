@@ -1,5 +1,16 @@
 import { config } from "../../config"
 
+const dateObject = new Date(Date.now());
+
+const year = dateObject.getFullYear();
+const month = ('0' + (dateObject.getMonth() + 1)).slice(-2);
+const day = ('0' + dateObject.getDate()).slice(-2);
+const hours = ('0' + dateObject.getHours()).slice(-2);
+const minutes = ('0' + dateObject.getMinutes()).slice(-2);
+const seconds = ('0' + dateObject.getSeconds()).slice(-2);
+
+const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
 describe('Single project tests', () => {
   let projectId: string;
 
@@ -29,12 +40,12 @@ describe('Single project tests', () => {
         Authorization: `Bearer ${config.token}`
       },
       body: {
-        name: `New unique name ${Math.random} `,
-        description: `New description created on ${Date.now}`
+        name: `New unique name Project #${Math.floor(100 * Math.random())}`,
+        description: `New description created on ${formattedDate}`
       }
     })
-      .then((postResponse) => {
-        expect(postResponse.status).to.equal(204);
+      .then((response) => {
+        expect(response.status).to.equal(204);
 
       });
   })
