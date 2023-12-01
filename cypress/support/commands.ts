@@ -1,3 +1,18 @@
+Cypress.Commands.add('getProjectId', () => {   
+        cy.request({
+            method: 'GET',
+            url: '/projects',
+            headers: {
+                Authorization: `Bearer ${config.token}`
+            }
+        }).then((response) => {
+            expect(response.status).to.equal(200);
+            expect(response.body).to.have.length.greaterThan(0);
+            expect(response.body[0]).to.have.property('id');
+            projectId = response.body[response.body.length - 1].id;
+        });
+    });
+
 // Cypress.Commands.add('logRequestAndResponse', (alias: string) => {
 //   cy.wait(`@${alias}`).then((interception) => {
 //     const request = interception.request;
