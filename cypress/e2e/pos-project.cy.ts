@@ -1,13 +1,13 @@
 import { config } from "../../config"
 import { generateFormattedDate } from '../utils/dateUtils';
 
-const formattedDate = generateFormattedDate();
+const formattedDate: string = generateFormattedDate();
 
 describe('Single project tests', () => {
   
-    before(() => {
-        cy.getProjectId();
-    });
+  before(() => {
+      cy.getProjectId();
+  });
 
   it('PATCH should modify name and description of a project using the /projects{id} endpoint', () => {
 
