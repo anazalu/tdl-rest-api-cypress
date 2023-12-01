@@ -1,22 +1,9 @@
 import { config } from "../../config"
 
 describe('Negative scenario colors tests', () => {
-    let projectId: string;
 
     before(() => {
-        // retrieve a project ID
-        cy.request({
-            method: 'GET',
-            url: '/projects',
-            headers: {
-                Authorization: `Bearer ${config.token}`
-            }
-        }).then((response) => {
-            expect(response.status).to.equal(200);
-            expect(response.body).to.have.length.greaterThan(0);
-            expect(response.body[0]).to.have.property('id');
-            projectId = response.body[response.body.length - 1].id;
-        });
+        cy.getProjectId();
     });
 
     it('POST should fail to add colors to the /projects/{id}/colors endpoint because of lacking name', () => {
