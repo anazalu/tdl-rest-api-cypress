@@ -1,6 +1,7 @@
 import { config } from "../../config"
-import formattedDate from "../fixtures/date-generator"
+import { generateFormattedDate } from '../utils/dateUtils';
 
+const formattedDate = generateFormattedDate();
 
 describe('Negative scenario for single project tests', () => {
   
