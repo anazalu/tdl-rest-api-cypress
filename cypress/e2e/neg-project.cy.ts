@@ -3,23 +3,10 @@ import formattedDate from "../fixtures/date-generator"
 
 
 describe('Negative scenario for single project tests', () => {
-  let projectId: string;
-
-  before(() => {
-    // retrieve a project ID
-    cy.request({
-      method: 'GET',
-      url: '/projects',
-      headers: {
-        Authorization: `Bearer ${config.token}`
-      }
-    }).then((response) => {
-      expect(response.status).to.equal(200);
-      expect(response.body).to.have.length.greaterThan(0);
-      expect(response.body[0]).to.have.property('id');
-      projectId = response.body[response.body.length - 1].id;
+  
+    before(() => {
+        cy.getProjectId();
     });
-  });
 
   it('PATCH should fail to modify name of a project using the /projects{id} endpoint', () => {
 
