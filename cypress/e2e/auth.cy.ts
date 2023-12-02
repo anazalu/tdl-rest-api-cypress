@@ -12,6 +12,7 @@ describe('Authentication test', () => {
       .then((response) => {
         expect(response.status).to.equal(200);
         expect(response.body).to.have.length.greaterThan(0);
+        // cy.log('Response Body:', JSON.stringify(response.body, null, 2));
       });
   });
 });

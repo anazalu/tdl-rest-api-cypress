@@ -1,5 +1,13 @@
 # tdl-rest-api
 
+### Install
+npm init -y 
+npm install cypress --save-dev
+npm install typescript --save-dev
+npx tsc --init
+
+https://www.codemotion.com/magazine/frontend/web-developer/how-to-set-up-a-cypress-typescript-project/
+
 #### Useful commands
 npx cypress run
 npx cypress run -s "cypress/e2e/neg-auth.cy.ts"

@@ -1,4 +1,4 @@
-const generateFormattedDate = () => {
+export const generateFormattedDate = () => {
   const dateObject: Date = new Date(Date.now());
   
   const year: number = dateObject.getFullYear();
@@ -10,5 +10,3 @@ const generateFormattedDate = () => {
 
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 };
-
-export { generateFormattedDate };
