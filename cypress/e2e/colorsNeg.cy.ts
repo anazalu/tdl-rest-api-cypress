@@ -24,7 +24,7 @@ describe('Negative scenario colors tests', () => {
     //     cy.getProjectId();
     // });
 
-    it('POST should fail to add colors to the /projects/{id}/colors endpoint because of lacking name', () => {
+    it('POST should fail to add colors to the /projects/{project_id}/colors endpoint because of lacking name', () => {
         cy.request({
             method: 'POST',
             url: `/projects/${projectId}/colors`,
@@ -46,7 +46,7 @@ describe('Negative scenario colors tests', () => {
             });
     });
 
-    it('POST should fail to add colors to the /projects/{id}/colors endpoint because of element', () => {
+    it('POST should fail to add colors to the /projects/{project_id}/colors endpoint because of element', () => {
         cy.request({
             method: 'POST',
             url: `/projects/${projectId}/colors`,

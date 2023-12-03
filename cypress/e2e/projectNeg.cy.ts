@@ -25,7 +25,7 @@ describe('Negative scenario for single project tests', () => {
   //   projectId = cy.getProjectId();    
   // });
 
-  it('PATCH should fail to modify name of a project using the /projects{id} endpoint', () => {
+  it('PATCH should fail to modify name of a project using the /projects/{project_id} endpoint', () => {
 
     cy.request({
       method: 'PATCH',
@@ -47,7 +47,7 @@ describe('Negative scenario for single project tests', () => {
       });
   })
 
-  it('PATCH should fail to modify description of a project using the /projects{id} endpoint', () => {
+  it('PATCH should fail to modify description of a project using the /projects/{project_id} endpoint', () => {
 
     cy.request({
       method: 'PATCH',

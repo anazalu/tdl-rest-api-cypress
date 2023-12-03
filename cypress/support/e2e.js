@@ -14,7 +14,7 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 
 // beforeEach(() => {
 //   cy.log('I run before every test in every spec file!!!!!!')

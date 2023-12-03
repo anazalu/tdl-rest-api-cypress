@@ -4,11 +4,16 @@
 npm init -y 
 npm install cypress --save-dev
 npm install typescript --save-dev
-npx tsc --init
+npm install --save-dev cypress cypress-real-events cypress-wait-until
+npm install mochawesome --save-dev
+npm install mochawesome-merge --save-dev
+npm install cypress-multi-reporters --save-dev
+npm install mochawesome-report-generator --save-dev
 
 https://www.codemotion.com/magazine/frontend/web-developer/how-to-set-up-a-cypress-typescript-project/
 
 #### Useful commands
+npx tsc --init
 npx cypress run
 npx cypress run -s "cypress/e2e/neg-auth.cy.ts"
 npx cypress open

@@ -9,10 +9,12 @@ export default defineConfig({
     baseUrl: 'https://api.zeplin.dev/v1',
     video: false,
   },
-  reporter: 'junit',
+  reporter: 'mochawesome',
   reporterOptions: {
-    mochaFile: 'results/my-test-output.xml',
+    reportDir: 'cypress/results',
     toConsole: true,
+    html: true,
+    json: true
   },
 });
 

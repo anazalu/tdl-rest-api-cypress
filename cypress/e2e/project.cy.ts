@@ -17,6 +17,8 @@ describe('Single project tests', () => {
     }).then((response) => {
       expect(response.status).to.equal(200);
       expect(response.body).to.have.length.greaterThan(0);
+      expect(response.body.id).to.be.a('string');
+
       projectId = response.body[response.body.length - 1].id;
     });
   });
@@ -25,7 +27,7 @@ describe('Single project tests', () => {
   //   projectId = cy.getProjectId();    
   // });
 
-  it('PATCH should modify name and description of a project using the /projects{id} endpoint', () => {
+  it('PATCH should modify name and description of a project using the /projects/{project_id} endpoint', () => {
     cy.request({
       method: 'PATCH',
       url: `/projects/${projectId}`,
