@@ -2,10 +2,6 @@ import { config } from "../../config";
 import { consoleLogBody } from "../utils/logUtils";
 
 describe('Authentication test', () => {
-  // before(() => {
-  //   cy.logRequestAndResponse();
-  // });
-
   it('GET should fetch at least 1 project from the /projects endpoint', () => {
     const getRequest = {
       method: 'GET',
@@ -14,9 +10,7 @@ describe('Authentication test', () => {
         Authorization: `Bearer ${config.token}`
       }
     };
-
     consoleLogBody(getRequest);
-
     cy.request(getRequest)
       .then((response) => {
         consoleLogBody(response);

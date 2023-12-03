@@ -1,5 +1,5 @@
 // ***********************************************************
-// This example support/e2e.js is processed and
+// This example support/e2e.ts is processed and
 // loaded automatically before your test files.
 //
 // This is a great place to put global configuration and
@@ -15,10 +15,22 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
+import { config } from '../../config';
 
-// beforeEach(() => {
-//   cy.log('I run before every test in every spec file!!!!!!')
-// })
+export let globalProjectId: string = '';
+
+before(() => {
+  // retrieve the last project's ID
+  cy.request({
+    method: 'GET',
+    url: '/projects',
+    headers: {
+      Authorization: `Bearer ${config.token}`
+    }
+  }).then((response) => {
+    globalProjectId = response.body[response.body.length - 1].id;
+  });
+});
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

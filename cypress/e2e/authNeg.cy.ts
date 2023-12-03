@@ -10,9 +10,7 @@ describe('Negative scenario for authentication test', () => {
         Authorization: ''
       }
     };
-
     consoleLogBody(getRequest);
-
     cy.request(getRequest)
       .then((response) => {
         consoleLogBody(response);

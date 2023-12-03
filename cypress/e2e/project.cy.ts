@@ -1,46 +1,48 @@
 import { config } from "../../config"
 import { generateFormattedDate } from '../utils/dateUtils';
-
-const formattedDate: string = generateFormattedDate();
-let projectId: string = '';
+import { globalProjectId } from "../support/e2e";
+import { consoleLogBody } from "../utils/logUtils";
 
 describe('Single project tests', () => {
-
-  before(() => {
-    // retrieve the last project's ID
-    cy.request({
-      method: 'GET',
-      url: '/projects',
-      headers: {
-        Authorization: `Bearer ${config.token}`
-      }
-    }).then((response) => {
-      expect(response.status).to.equal(200);
-      expect(response.body).to.have.length.greaterThan(0);
-      expect(response.body.id).to.be.a('string');
-
-      projectId = response.body[response.body.length - 1].id;
-    });
-  });
-
-  // before(() => {
-  //   projectId = cy.getProjectId();    
-  // });
-
   it('PATCH should modify name and description of a project using the /projects/{project_id} endpoint', () => {
-    cy.request({
+    const projectName: string = `New unique updated name Project #${Math.floor(100 * Math.random())}`;
+    const projectDescription: string = `New description updated on ${generateFormattedDate()}`;
+    const patchRequest = {
       method: 'PATCH',
-      url: `/projects/${projectId}`,
+      url: `/projects/${globalProjectId}`,
       headers: {
         Authorization: `Bearer ${config.token}`
       },
       body: {
-        name: `New unique updated name Project #${Math.floor(100 * Math.random())}`,
-        description: `New description updated on ${formattedDate}`
+        name: projectName,
+        description: projectDescription
       }
-    })
-      .then((response) => {
-        expect(response.status).to.equal(204);
+    };
+    consoleLogBody(patchRequest);
+    cy.request(patchRequest)
+      .then((patchResponse) => {
+        consoleLogBody(patchResponse);
+        expect(patchResponse.status).to.equal(204);
+        const getRequest = {
+          method: 'GET',
+          url: `/projects/${globalProjectId}`,
+          headers: {
+            Authorization: `Bearer ${config.token}`
+          }
+        };
+        consoleLogBody(getRequest);
+        return cy.request(getRequest);
+      }).then((getResponse) => {
+        consoleLogBody(getResponse);
+        expect(getResponse.status).to.equal(200);
+        expect(getResponse.body).to.have.property("name");
+        expect(getResponse.body.name).to.be.a('string');
+        expect(getResponse.body).to.have.property("name", projectName);
+        expect(getResponse.body).to.have.property("description");
+        expect(getResponse.body.description).to.be.a('string');
+        expect(getResponse.body).to.have.property("description", projectDescription);
+        expect(getResponse.body).to.have.property("id");
+        expect(getResponse.body.id).to.be.a('string');
       });
   });
-})
+});
