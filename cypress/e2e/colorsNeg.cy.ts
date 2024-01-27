@@ -28,7 +28,7 @@ describe('Negative scenario colors tests', () => {
             });
     });
 
-    it('POST should fail to add colors to the /projects/{project_id}/colors endpoint because of element', () => {
+    it('POST should fail to add colors to the /projects/{project_id}/colors endpoint because of a lacking element', () => {
         const request = {
             method: 'POST',
             url: `/projects/${globalProjectId}/colors`,
