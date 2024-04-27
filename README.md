@@ -1,4 +1,4 @@
-# tdl-rest-api
+# tdl-rest-api-automation
 
 ## Tech Stack
 
@@ -42,6 +42,6 @@ npx cypress run -s "cypress/e2e/$testSetName"
 npx cypress open
 ```
 Then, select E2E Testing, choose a browser and press Start E2E Testing, click a spec name.
-Console logs (F12) with request and response body appear here, but somehow cannot be seen in Mochawesome browser report.
+Console logs (F12) with request and response body appear here, but currently cannot be seen in Mochawesome browser report.
 
 #### Execution report can be found at /results/mochawesome.json
